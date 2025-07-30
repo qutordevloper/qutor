@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebas
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-// Your Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAPhHWUUicDAgCg_Myefi5J4eTCQRNGnUM",
   authDomain: "qutor-fdd88.firebaseapp.com",
@@ -13,7 +13,6 @@ const firebaseConfig = {
   measurementId: "G-7X1CK9JXJP"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -48,13 +47,13 @@ document.getElementById("submitSignUp").addEventListener("click", (event) => {
     })
     .then(() => {
       showMessage("Account Created Successfully!", "signUpMessage");
-      window.location.href = "index.html"; // change as needed
+      window.location.href = "index.html";
     })
     .catch((error) => {
       if (error.code === "auth/email-already-in-use") {
         showMessage("Email already in use!", "signUpMessage");
       } else {
-        showMessage("Failed to create account!", "signUpMessage");
+        showMessage("Unable to create account!", "signUpMessage");
       }
       console.error(error);
     });
