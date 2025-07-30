@@ -1,9 +1,8 @@
-// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-// Firebase configuration
+// Your Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAPhHWUUicDAgCg_Myefi5J4eTCQRNGnUM",
   authDomain: "qutor-fdd88.firebaseapp.com",
@@ -19,7 +18,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Show message helper
 function showMessage(message, divId) {
   const messageDiv = document.getElementById(divId);
   messageDiv.style.display = "block";
@@ -30,13 +28,34 @@ function showMessage(message, divId) {
   }, 5000);
 }
 
-// Sign up event listener
 document.getElementById("submitSignUp").addEventListener("click", (event) => {
   event.preventDefault();
 
-  const email = document.getElementById("remail").value;
+  const firstName = document.getElementById("fName").value;
+  const lastName = document.getElementById("lName").value;
+  const email = document.getElementById("rEmail").value;
   const password = document.getElementById("rPassword").value;
-  const firstname = document.getElementById("rFirstName").value;
-  const lastname = document.getElementById("rLastName").value;
 
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      const userData = {
+        first: firstName,
+        last: lastName,
+        email: email
+      };
+      return setDoc(doc(db, "users", user.uid), userData);
+    })
+    .then(() => {
+      showMessage("Account Created Successfully!", "signUpMessage");
+      window.location.href = "index.html"; // change as needed
+    })
+    .catch((error) => {
+      if (error.code === "auth/email-already-in-use") {
+        showMessage("Email already in use!", "signUpMessage");
+      } else {
+        showMessage("Failed to create account!", "signUpMessage");
+      }
+      console.error(error);
+    });
+});
