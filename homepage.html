@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homepage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #35424a;
+      color: white;
+    }
+    div {
+      margin: 20px;
+      padding: 10px;
+      background: white;
+      border: 1px solid #ccc;
+    }
+    #Logout {
+      background-color: #35424a;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+  <script type="module" src="./homepage.js"></script>
+</head>
+<body>
+  <h1>Welcome to the Homepage</h1>
+  <div>First Name: <span id="loggedUserFName"></span></div>
+  <div>Last Name: <span id="loggedUserLName"></span></div>
+  <div>Email: <span id="loggedUserEmail"></span></div>
+  <button id="Logout">Logout</button>
+</body>
+</html>
