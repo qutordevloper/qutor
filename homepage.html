@@ -18,13 +18,66 @@
       color: white;
       padding: 20px;
       text-align: center;
+      font-size: 28px;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 80px;
+      right: 40px;
+    }
+
+    .dropbtn {
+      background-color: #1976d2;
+      position: absolute;
+      top: 80px;
+      right: 40px;
+      color: white;
+      padding: 22px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: #0d47a1;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #e3f2fd;
     }
 
     .greeting {
+      font-size: 50px;
+      font-weight: 600;
+      position: absolute; 
+      right: 50%;
+      margin-top: 60px;
+    }
+
+    .greeting1 {
       font-size: 28px;
       font-weight: 600;
-      text-align: center;
-      margin-top: 60px;
+      position: absolute; 
+      right: 46.5%;
+      margin-top: 80px;
     }
 
     .user-info {
@@ -32,6 +85,9 @@
     }
 
     #Logout {
+      position: absolute;
+      top: 280px;
+      right: 500px;
       display: block;
       background-color: #1976d2;
       color: white;
@@ -42,20 +98,29 @@
       font-size: 16px;
       border-radius: 8px;
       transition: background-color 0.3s ease;
+      margin-top: 130px;
     }
 
     #Logout:hover {
       background-color: #0d47a1;
     }
   </style>
-  <script type="module" src="./homepage.js"></script>
 </head>
 <body>
   <header>
-    <h1>Welcome to Qutor</h1>
+    Qutor
   </header>
 
-  <div class="greeting">Hi, <span id="userName">...</span>!</div>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="toggleDropdown()"><>grade</button>
+    <div class="dropdown-content" id="dropdownContent">
+      <a href="#">grade 7</a>
+      <a href="#">grade 8</a>
+    </div>
+  </div>
+
+  <div class="greeting">Hi,</div>
+  <div class="greeting1"><span id="loggedUserFName">...</span>!</div>
 
   <!-- This section is hidden -->
   <div class="user-info">
@@ -65,5 +130,23 @@
   </div>
 
   <button id="Logout">Logout</button>
+
+  <script type="module" src="./homepage.js"></script>
+  <script>
+    function toggleDropdown() {
+      const content = document.getElementById("dropdownContent");
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+
+    // Optional: Close dropdown when clicking outside
+    window.onclick = function(e) {
+      if (!e.target.matches('.dropbtn')) {
+        const dropdown = document.getElementById("dropdownContent");
+        if (dropdown && dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        }
+      }
+    };
+  </script>
 </body>
 </html>
