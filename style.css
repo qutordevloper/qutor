@@ -150,3 +150,30 @@ button:hover {
     80% { opacity: 1; }
     100% { opacity: 0; display: none; }
 }
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    padding: 1rem;
+    margin: 20px auto;
+  }
+
+  form {
+    margin: 0 1rem;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .links {
+    flex-direction: column;
+    padding: 0;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
+
