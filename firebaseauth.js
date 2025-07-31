@@ -1,6 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import {
+  getFirestore,
+  setDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 // Firebase config
 const firebaseConfig = {
@@ -27,6 +35,7 @@ function showMessage(message, divId) {
   }, 5000);
 }
 
+// Sign Up
 document.getElementById("submitSignUp").addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -58,6 +67,8 @@ document.getElementById("submitSignUp").addEventListener("click", (event) => {
       console.error(error);
     });
 });
+
+// Sign In
 document.getElementById("submitSignIn").addEventListener("click", (event) => {
   event.preventDefault();
   const email = document.getElementById("email").value;
@@ -74,7 +85,6 @@ document.getElementById("submitSignIn").addEventListener("click", (event) => {
       showMessage("Sign In Successful!", "signInMessage");
 
       localStorage.setItem("loggedInUser", JSON.stringify(user));
-
       window.location.href = "homepage.html";
     })
     .catch((error) => {
@@ -89,23 +99,4 @@ document.getElementById("submitSignIn").addEventListener("click", (event) => {
       console.error("Login Error:", error);
     });
 });
-
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user=userCredential.user;
-      showMessage("Sign In Successful!", "signInMessage");
-      localStorage.setItem("loggedInUser", user,uid)
-      window.location.href = "homepage.html";
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      if (errorCode === "auth/wrong-password") {
-        showMessage("incorrect credentials!", "signInMessage");
-      }
-      else {
-        showMessage("account does not exist!", "signInMessage");
-      }
-      console.error(error);
-    });
-});
+//new code changed
