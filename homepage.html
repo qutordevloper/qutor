@@ -9,7 +9,7 @@
       font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e3f2fd; /* light blue background */
+      background-color: #e3f2fd;
       color: #0d47a1;
     }
 
@@ -21,34 +21,23 @@
     }
 
     .greeting {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 600;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 60px;
     }
 
     .user-info {
-      margin: 30px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-    }
-
-    .user-info div {
-      margin-bottom: 12px;
-      font-size: 16px;
-      color: #1565c0;
+      display: none; /* hidden */
     }
 
     #Logout {
       display: block;
       background-color: #1976d2;
       color: white;
-      padding: 10px 20px;
+      padding: 10px 24px;
       border: none;
-      margin: 30px auto;
+      margin: 40px auto;
       cursor: pointer;
       font-size: 16px;
       border-radius: 8px;
@@ -66,7 +55,14 @@
     <h1>Welcome to Qutor</h1>
   </header>
 
-  <div class="greeting" id="userGreeting">Hi, <span id="loggedUserFName">...</span>!</div>
+  <div class="greeting">Hi, <span id="userName">...</span>!</div>
+
+  <!-- This section is hidden -->
+  <div class="user-info">
+    <div><strong>First Name:</strong> <span id="loggedUserFName">Loading...</span></div>
+    <div><strong>Last Name:</strong> <span id="loggedUserLName">Loading...</span></div>
+    <div><strong>Email:</strong> <span id="loggedUserEmail">Loading...</span></div>
+  </div>
 
   <button id="Logout">Logout</button>
 </body>
