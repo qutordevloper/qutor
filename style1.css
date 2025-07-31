@@ -1,3 +1,13 @@
+/* Logo styling */
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
