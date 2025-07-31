@@ -21,7 +21,7 @@ header {
 
 .dropdown {
   top: 300px;
-  right: 600px;
+  right: 615px;
 }
 
 .dropdown1 {
@@ -96,9 +96,9 @@ header {
   font-size: 20px;
   font-weight: 600;
   position: absolute;
-  right: 5%;
+  right: 5.2%;
   text-align: center;
-  margin-left: 5%;
+  left: 5%;
   margin-top: 130px;
 }
 
