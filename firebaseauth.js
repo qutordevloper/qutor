@@ -58,3 +58,28 @@ document.getElementById("submitSignUp").addEventListener("click", (event) => {
       console.error(error);
     });
 });
+const signIn = document.getElementById("submitSignIn");
+signIn.addEventListener("click", (event) => {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const auth=getAuth();
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user=userCredential.user;
+      showMessage("Sign In Successful!", "signInMessage");
+      localStorage.setItem("loggedInUser", user,uid)
+      window.location.href = "homepage.html";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      if (errorCode === "auth/wrong-password") {
+        showMessage("incorrect credentials!", "signInMessage");
+      }
+      else {
+        showMessage("account does not exist!", "signInMessage");
+      }
+      console.error(error);
+    });
+});
